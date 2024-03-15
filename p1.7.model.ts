@@ -6,7 +6,7 @@ export function menu(): void {
         console.log('1 - Dúvidas');
         console.log('2 - Reclamações');
         console.log('3 - Sair');
-        let userInput = parseInt(readlineSync.question("opcao: "));
+        let userInput:number = parseInt(readlineSync.question("opcao: "));
         switch (userInput) {
             case 1: {
                 console.log("Suas dúvidas devem ser encaminhadas para o email: duvidas@email.com");
