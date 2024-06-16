@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "readline-sync": "^1.4.10"
+    "@types/node": "^20.12.13",
+    "readline-sync": "^1.4.10",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@types/readline-sync": "^1.4.8"
