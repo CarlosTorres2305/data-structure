@@ -63,7 +63,28 @@ class StringSearch{
             }            
         }
         return shifts;        
-    } 
+    }
+    
+    boyerMooreEncapsulado(pattern: string, text: string): { ocorrencias: number[], deslocamentos: number } {
+        let deslocamentos = 0;
+
+        //
+        const originalConsoleLog = console.log;
+        console.log = function (message: any) {
+            if (typeof message === 'string' && message.startsWith('Position shift:')) {
+                deslocamentos++;
+            }
+            originalConsoleLog.apply(console, arguments as any);
+        };
+
+        const ocorrencias = this.boyer_moore(pattern, text);
+
+        // Restaurando o console.log original
+        console.log = originalConsoleLog;
+        deslocamentos--
+
+        return { ocorrencias, deslocamentos };
+    }
 }
 
 export{

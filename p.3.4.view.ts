@@ -7,22 +7,22 @@ const conteudo: string = lerArquivo(nomeArquivo);
 //console.log(conteudo);
 
 let palavras = conteudo.split(/\s+/);
-const delimitador = ',';
+const delimitador = ';';
 
 const resultado = palavras.join(delimitador);
 console.log(`String coletada: ${resultado}`);
 //Resultado com delimitador
 
 
-let str_search = new StringSearch();
 let userInput:string =(readlineSync.question("Digite uma palavra: "));
 
 
+const search = new StringSearch();
+const desloc = search.boyerMooreEncapsulado(userInput, resultado);
+const ocorrencias = desloc.ocorrencias.length;
+const deslocamentos = desloc.ocorrencias;
+const totalDeslocamentos = desloc.deslocamentos;
 
-const deslocamentos = str_search.boyer_moore(userInput,resultado)
-const ocorrencias = deslocamentos.length;
-
-const totalDeslocamentos = deslocamentos.reduce((acc, val) => acc + val, 0);
 
 
 console.log(`String coletada: ${resultado}`);
