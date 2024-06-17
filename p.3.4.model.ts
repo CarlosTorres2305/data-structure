@@ -1,5 +1,31 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { StringSearch } from './string_search';
+
+
+export function boyerMooreEncapsulado(search: StringSearch, pattern: string, text: string): { ocorrencias: number[], deslocamentos: number } {
+    let deslocamentos = 0;
+
+    // contagem de deslocamentos
+    const originalConsoleLog = console.log;
+    console.log = function (message: any) {
+        if (typeof message === 'string' && message.startsWith('Position shift:')) {
+            deslocamentos++;
+        }
+        originalConsoleLog.apply(console, arguments as any);
+    };
+
+    const ocorrencias = search.boyer_moore(pattern, text);
+
+    // Restaurando o console.log original
+    console.log = originalConsoleLog;
+    deslocamentos--
+
+    return { ocorrencias, deslocamentos };
+}
+
+
+
 
 
 // Função para ler o conteúdo de um arquivo de texto
@@ -21,7 +47,6 @@ function lerArquivo(nomeArquivo: string): string {
 }
 
 
-// Nome do arquivo que queremos ler
 
 
 export {lerArquivo};

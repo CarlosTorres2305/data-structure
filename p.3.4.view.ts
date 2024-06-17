@@ -1,6 +1,7 @@
 import {lerArquivo} from './p.3.4.model'
 import { StringSearch } from './string_search';
 import * as readlineSync from 'readline-sync';
+import { boyerMooreEncapsulado } from './p.3.4.model';
 
 const nomeArquivo = 'entrada.txt';
 const conteudo: string = lerArquivo(nomeArquivo);
@@ -16,9 +17,8 @@ console.log(`String coletada: ${resultado}`);
 
 let userInput:string =(readlineSync.question("Digite uma palavra: "));
 
-
 const search = new StringSearch();
-const desloc = search.boyerMooreEncapsulado(userInput, resultado);
+const desloc = boyerMooreEncapsulado(search, userInput, resultado);
 const ocorrencias = desloc.ocorrencias.length;
 const deslocamentos = desloc.ocorrencias;
 const totalDeslocamentos = desloc.deslocamentos;
